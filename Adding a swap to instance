@@ -1,0 +1,43 @@
+🧰 Steps to Create Swap Memory
+1. Choose swap size & ensure free disk space
+Decide how much swap you need (e.g. 1–4 GB is common). Check disk space using below command
+
+df -h /
+
+2. Allocate the swap file
+Using fallocate (fast, preferred): using below command
+
+sudo fallocate -l 2G /swapfile
+
+3. Secure the file
+Restrict access so only root can use it: by below command
+
+sudo chmod 600 /swapfile
+
+4. Set up as swap space by using below command
+
+sudo mkswap /swapfile
+
+5. Enable swap immediately by using below command
+
+sudo swapon /swapfile
+
+6. Check it's active: by using below command
+
+swapon --show
+free -h
+
+7. Make it persistent across reboots
+Add this line to /etc/fstab:
+
+/swapfile none swap sw 0 0
+
+OR You can append it via: below command
+
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+8.Then optionally reload mounts: by using below command
+
+sudo swapon -a
+
+
