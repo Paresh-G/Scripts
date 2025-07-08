@@ -1,0 +1,75 @@
+#!/bin/bash
+
+#Installation part
+
+#installing java 17
+sudo yum install -y java-17-amazon-corretto.x86_64
+
+#installing git
+yum install -y git
+
+#installing jenkin
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum install -y jenkins
+sudo systemctl enable --now jenkins
+
+
+#installing maven in /opt folder
+cd /opt/
+sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.10/binaries/apache-maven-3.9.10-bin.tar.gz
+sudo tar -xvf apache-maven-3.9.10-bin.tar.gz
+sudo yum install -y maven
+
+
+#Configuration of maven and java, 
+sudo echo "JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto.x86_64" >> /home/ec2-user/.bash_profile
+sudo echo "M2_HOME=/opt/apache-maven-3.9.10" >> /home/ec2-user/.bash_profile
+sudo echo "M2=/opt/apache-maven-3.9.10/bin" >> /home/ec2-user/.bash_profile
+sed -i 's|PATH=$PATH:$HOME/.local/bin:$HOME/bin|PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME:$M2_HOME:$M2|' /home/ec2-user/.bash_profile
+
+#Refreshing path
+source .bash_profile
+
+#checking any update in the package
+sudo yum update -y
+
+sleep 120
+#--------------------- Health Checkup-------------------------
+
+touch /home/ec2-user/abc.txt
+echo "-------------------------System uptime-------------------------" >> abc.txt
+echo " " >> abc.txt
+uptime >> abc.txt
+echo " " >> abc.txt
+echo "-------------------------Java Version-------------------------" >> abc.txt
+echo " " >> abc.txt
+java --version >> abc.txt
+echo " " >> abc.txt
+echo "-------------------------Jenkin Service Status-------------------------" >> abc.txt
+echo " " >> abc.txt
+sudo systemctl status jenkins >> abc.txt
+echo " " >> abc.txt
+echo "-------------------------Git Version-------------------------" >> abc.txt
+echo " " >> abc.txt
+git -v >> abc.txt
+echo " " >> abc.txt
+echo "-------------------------Maven Version-------------------------" >> abc.txt
+echo " " >> abc.txt
+mvn -v >> abc.txt
+echo " " >> abc.txt
+echo "-------------------------Maven Files-------------------------" >> abc.txt
+echo " " >> abc.txt
+ls -lrt /opt/ >> abc.txt
+echo " " >> abc.txt
+echo "-------------------------Jenkin Initial passkey-------------------------" >> abc.txt
+echo " " >> abc.txt
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword >> abc.txt
+echo " " >> abc.txt
+echo "-------------------------ENV Variable o/p-------------------------" >> abc.txt
+echo " " >> abc.txt
+cat /home/ec2-user/.bash_profile >> abc.txt
+echo " " >> abc.txt
+echo "-------------------------ENV Variable path-------------------------" >> abc.txt
+echo " " >> abc.txt
+echo $PATH >> abc.txt
