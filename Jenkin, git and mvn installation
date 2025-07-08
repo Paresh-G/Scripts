@@ -5,21 +5,30 @@
 #installing java 17
 sudo yum install -y java-17-amazon-corretto.x86_64
 
+sleep 10
+
 #installing git
 yum install -y git
+
+sleep 10
 
 #installing jenkin
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 sudo yum install -y jenkins
+
+sleep 10
+
 sudo systemctl enable --now jenkins
 
+sleep 20
 
 #installing maven in /opt folder
 sudo wget -P /opt https://dlcdn.apache.org/maven/maven-3/3.9.10/binaries/apache-maven-3.9.10-bin.tar.gz
 tar -xvzf /opt/apache-maven-3.9.10-bin.tar.gz -C /opt/
 sudo yum install -y maven
 
+sleep 10
 
 #Configuration of maven and java, 
 sudo echo "JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto.x86_64" >> /home/ec2-user/.bash_profile
@@ -27,11 +36,17 @@ sudo echo "M2_HOME=/opt/apache-maven-3.9.10" >> /home/ec2-user/.bash_profile
 sudo echo "M2=/opt/apache-maven-3.9.10/bin" >> /home/ec2-user/.bash_profile
 sed -i 's|PATH=$PATH:$HOME/.local/bin:$HOME/bin|PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME:$M2_HOME:$M2|' /home/ec2-user/.bash_profile
 
+sleep 5
+
 #checking any update in the package
 sudo yum update -y
 
+sleep 5
+
 #Refreshing path
 source .bash_profile
+
+sleep 5
 #--------------------- Health Checkup-------------------------
 
 touch /home/ec2-user/abc.txt
