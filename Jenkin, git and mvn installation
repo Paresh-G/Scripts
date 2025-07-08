@@ -27,13 +27,12 @@ sudo echo "M2_HOME=/opt/apache-maven-3.9.10" >> /home/ec2-user/.bash_profile
 sudo echo "M2=/opt/apache-maven-3.9.10/bin" >> /home/ec2-user/.bash_profile
 sed -i 's|PATH=$PATH:$HOME/.local/bin:$HOME/bin|PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME:$M2_HOME:$M2|' /home/ec2-user/.bash_profile
 
-#Refreshing path
-source .bash_profile
-
 #checking any update in the package
 sudo yum update -y
 
 sleep 120
+#Refreshing path
+source .bash_profile
 #--------------------- Health Checkup-------------------------
 
 touch /home/ec2-user/abc.txt
