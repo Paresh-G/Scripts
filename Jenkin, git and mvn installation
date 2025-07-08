@@ -16,9 +16,8 @@ sudo systemctl enable --now jenkins
 
 
 #installing maven in /opt folder
-cd /opt/
-sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.10/binaries/apache-maven-3.9.10-bin.tar.gz
-sudo tar -xvf apache-maven-3.9.10-bin.tar.gz
+sudo wget -P /opt https://dlcdn.apache.org/maven/maven-3/3.9.10/binaries/apache-maven-3.9.10-bin.tar.gz
+sudo tar -xvf /opt/apache-maven-3.9.10-bin.tar.gz
 sudo yum install -y maven
 
 
