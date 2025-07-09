@@ -26,7 +26,7 @@ sed -i 's|PATH=$PATH:$HOME/.local/bin:$HOME/bin|PATH=$PATH:$HOME/.local/bin:$HOM
 #Refreshing path
 source .bash_profilemy-scripts
 
-wget -O /home/ec2-user/Server-Health-checkup.sh https://raw.githubusercontent.com/Paresh-G/my-script/master/server-health-checkup.sh
+wget -O /home/ec2-user/Server-Health-checkup.sh https://raw.githubusercontent.com/Paresh-G/my-scripts/master/server-health-checkup.sh
 
 sudo sh /home/ec2-user/Server-Health-checkup.sh
 
