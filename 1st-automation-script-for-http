@@ -1,26 +1,13 @@
 #!/bin/bash
 
-#Updating packages
-sudo yum update -y
-
-#installing git
-sudo yum install -y git
-
-#Creating a dir paresh
-sudo mkdir -p /home/ec2-user/paresh
-
-cd /home/ec2-user/paresh
-
-#giving permission to paresh
-sudo chmod 777 /home/ec2-user/paresh
-
-#cloning git repo were index.html present
-git clone https://github.com/Paresh-G/Test.git
-
 #Installing httpd package
 sudo yum install -y httpd
 
 #starting httpd service
 sudo systemctl start httpd
 
-sudo cp /home/ec2-user/paresh/Test/index.html /var/www/html/
+#Downloading git repo were index.html present
+wget -O /var/www/html/index.html https://raw.githubusercontent.com/Paresh-G/HTML/index.html
+
+#Updating packages
+sudo yum update -y
