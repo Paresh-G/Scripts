@@ -26,7 +26,6 @@ sleep 20
 #installing maven in /opt folder
 sudo wget -P /opt https://dlcdn.apache.org/maven/maven-3/3.9.10/binaries/apache-maven-3.9.10-bin.tar.gz
 tar -xvzf /opt/apache-maven-3.9.10-bin.tar.gz -C /opt/
-sudo yum install -y maven
 
 sleep 10
 
@@ -46,42 +45,4 @@ sleep 5
 #Refreshing path
 source .bash_profile
 
-sleep 5
-#--------------------- Health Checkup-------------------------
 
-touch /home/ec2-user/abc.txt
-echo "-------------------------System uptime-------------------------" >> abc.txt
-echo " " >> abc.txt
-uptime >> abc.txt
-echo " " >> abc.txt
-echo "-------------------------Java Version-------------------------" >> abc.txt
-echo " " >> abc.txt
-java --version >> abc.txt
-echo " " >> abc.txt
-echo "-------------------------Jenkin Service Status-------------------------" >> abc.txt
-echo " " >> abc.txt
-sudo systemctl status jenkins >> abc.txt
-echo " " >> abc.txt
-echo "-------------------------Git Version-------------------------" >> abc.txt
-echo " " >> abc.txt
-git -v >> abc.txt
-echo " " >> abc.txt
-echo "-------------------------Maven Version-------------------------" >> abc.txt
-echo " " >> abc.txt
-mvn -v >> abc.txt
-echo " " >> abc.txt
-echo "-------------------------Maven Files-------------------------" >> abc.txt
-echo " " >> abc.txt
-ls -lrt /opt/ >> abc.txt
-echo " " >> abc.txt
-echo "-------------------------Jenkin Initial passkey-------------------------" >> abc.txt
-echo " " >> abc.txt
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword >> abc.txt
-echo " " >> abc.txt
-echo "-------------------------ENV Variable o/p-------------------------" >> abc.txt
-echo " " >> abc.txt
-cat /home/ec2-user/.bash_profile >> abc.txt
-echo " " >> abc.txt
-echo "-------------------------ENV Variable path-------------------------" >> abc.txt
-echo " " >> abc.txt
-echo $PATH >> abc.txt
