@@ -28,7 +28,7 @@ source .bash_profile
 source .bash_profile
 source .bash_profile
 
-wget -O /home/ec2-user/Server-Health-checkup.sh https://raw.githubusercontent.com/Paresh-G/Scripts/master/Server-Health-checkup.sh
+wget -O /home/ec2-user/Server-Health-checkup.sh https://raw.githubusercontent.com/Paresh-G/Scripts/master/server-health-checkup.sh
 
 sudo sh /home/ec2-user/Server-Health-checkup.sh
 
