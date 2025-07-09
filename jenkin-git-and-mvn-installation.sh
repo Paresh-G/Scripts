@@ -24,9 +24,9 @@ sudo echo "M2=/opt/apache-maven-3.9.10/bin" >> /home/ec2-user/.bash_profile
 sed -i 's|PATH=$PATH:$HOME/.local/bin:$HOME/bin|PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME:$M2_HOME:$M2|' /home/ec2-user/.bash_profile
 
 #Refreshing path
-source .bash_profile
+source .bash_profilemy-scripts
 
-wget -O /home/ec2-user/Server-Health-checkup.sh https://raw.githubusercontent.com/Paresh-G/Scripts/master/server-health-checkup.sh
+wget -O /home/ec2-user/Server-Health-checkup.sh https://raw.githubusercontent.com/Paresh-G/my-script/master/server-health-checkup.sh
 
 sudo sh /home/ec2-user/Server-Health-checkup.sh
 
